@@ -1,50 +1,303 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>POLARIS Registry</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POLARIS · registro espacial</title>
+  <!-- Bootstrap 5 + Iconos + Fuentes Google -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="css/styles.css">
 
+</head>
 <body>
 
-<header>
-    <h1>POLARIS</h1>
-    <p>Portal del Programa POLARIS</p>
-</header>
-
-<nav>
-    <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Equipos</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="registro.html">Únete a POLARIS</a></li>
-    </ul>
+<!-- BARRA DE NAVEGACIÓN -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-vidrio">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">
+    <img src="imagenes/logo.png" 
+     alt="Polaris" 
+     class="imagen-circular"
+     style="height: 70px; width: 70px; margin-right: 10px; object-fit: cover;">
+  <span class="fw-bold texto-degradado">POLARIS</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPolaris">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarPolaris">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#members">Miembros</a></li>
+        <li href="registro.html" class="nav-item"><a class="nav-link" href="#cta">Unirse</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
-<main>
-
-<section>
-    <h2>Bienvenido al Programa POLARIS</h2>
-    <p>
-        Plataforma del programa universitario de formación en tecnologías espaciales.
-    </p>
+<!-- HERO (sin el badge de comunidad exclusiva) -->
+<section id="hero" class="hero">
+  <div class="hero-capa"></div>
+  <div class="container position-relative text-center text-md-start" style="z-index: 3;">
+    <div class="row min-vh-100 align-items-center">
+      <div class="col-lg-8 col-xl-7">
+        <h1 class="display-1 fw-bold texto-degradado" style="font-size: clamp(3.5rem, 12vw, 5.5rem);">POLARIS Registry</h1>
+        <p class="lead fs-3 my-4 text-light">Un programa de investigación de élite donde los proyectos <span class="fw-semibold text-info">PolariX, Mentes en Órbita e Hydronautas</span> convergen para expandir los límites de la exploración espacial.</p>
+        <div class="d-flex flex-wrap gap-3 mt-5">
+          <a href="#cta" class="btn boton-neon btn-lg px-5 py-3">Acceso exclusivo <i class="bi bi-arrow-right-short"></i></a>
+          <a href="#projects" class="btn boton-contorno-neon btn-lg px-5 py-3">Conoce los proyectos</a>
+        </div>
+        <!-- El badge ha sido eliminado -->
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-    <h2>Proyectos</h2>
-    <p>
-        Aquí se mostrarán los equipos y proyectos del programa.
-    </p>
+<!-- SOBRE POLARIS (Dra. Martínez) - con espacio para tu logo -->
+<section id="about" class="container">
+  <div class="row align-items-center g-5">
+    <div class="col-md-7">
+      <div class="tarjeta-vidrio p-5">
+        <h2 class="display-4 texto-degradado mb-4">Sobre POLARIS</h2>
+        <p class="fs-5">Impulsado por la <strong class="text-warning">Dra. Anabel </strong>, POLARIS nace con la misión de reunir a integrantes post-proyecto. Participantes de los proyectos <i>PolariX, Mentes en Órbita e Hydronautas</i>.</p>
+        <p class="fs-5 mt-3">La membresía es <span class="borde-inferior-info">exclusiva para quienes han formado parte activa de al menos uno de los tres proyectos insignia</span>.</p>
+        <div class="mt-4 d-flex align-items-center">
+          <i class="bi bi-quote display-1 text-info opacity-50"></i>
+          <span class="ms-2 fst-italic">"El próximo salto de la humanidad no será individual, sino una constelación de mentes que ya estuvieron allí."</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 text-center">
+      <!-- Este es el espacio para tu logo futuro -->
+      <div class="circulo-logo">
+        <div class="logo-placeholder">
+          <!-- Aquí puedes colocar tu logo (imagen o texto) -->
+<img src="imagenes/logo.png" 
+         alt="Logo Polaris" 
+         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+      </div>
+      <p class="mt-4 text-info"> Polaris</p>
+    </div>
+  </div>
 </section>
 
-</main>
+<!-- PROYECTOS DESTACADOS -->
+<section id="projects" class="container-fluid">
+  <div class="container">
+    <h2 class="display-3 text-center texto-degradado mb-5">Proyectos insignia</h2>
+    <div class="row g-4">
+      <!-- PolariX -->
+      <div class="col-lg-4">
+        <div class="tarjeta-vidrio h-100">
+          <img src="imagenes/logo.png" class="img-proyecto card-img-top" alt="PolariX">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="h2 fw-bold mb-0">PolariX</h3>
+            </div>
+            <p class="card-text fs-5">Plataforma web diseñada para registrar a los estudiantes que han participado en los proyectos PolariX, Hydronautas y Mentes en Órbita. La página busca conservar el historial de participación, conectar a los integrantes y formar una comunidad tecnológica del TecNM Campus Matamoros.</p>
+            <hr class="bg-info">
+            <div class="d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-people-fill me-2 text-info"></i> 18 investigadores</span>
+              <a href="#" class="btn btn-sm boton-contorno-neon rounded-pill px-4">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Mentes en Órbita -->
+      <div class="col-lg-4">
+        <div class="tarjeta-vidrio h-100">
+          <img src="https://alcalaopina.es/wp-content/uploads/Alumnos-del-IES-Antonio-Machado-construiran-y-lanzaran-un-mini.jpg" class="img-proyecto card-img-top" alt="Mentes en Órbita">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="h2 fw-bold mb-0">Mentes en Órbita</h3>
+            </div>
+            <p class="card-text fs-5">Equipo del TecNM Campus Matamoros que participó en el Encuentro Mexicano de Ingeniería en Cohetería Experimental (ENMICE 2025) en la categoría de Carga Útil. El proyecto integra electrónica, telemetría, adquisición de datos y mecanismos de recuperación, reflejando el talento y compromiso de los estudiantes participantes.</p>
+            <hr class="bg-info">
+            <div class="d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-people-fill me-2 text-info"></i> 22 investigadores</span>
+              <a href="#" class="btn btn-sm boton-contorno-neon rounded-pill px-4">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Hydronautas -->
+      <div class="col-lg-4">
+        <div class="tarjeta-vidrio h-100">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.nZ0kPcb8hBdNCDbaRXpRDQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" class="img-proyecto card-img-top" alt="Hydronautas">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="h2 fw-bold mb-0">Hydronautas</h3>
+            </div>
+            <p class="card-text fs-5">Proyecto de cohetería experimental impulsado por agua presentado en el Encuentro Nacional de Robótica 2026. Durante el evento se presentó el módulo de telemetría Bravo-TM, un sistema que permite el monitoreo y la recopilación de datos durante las misiones del cohete.</p>
+            <hr class="bg-info">
+            <div class="d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-people-fill me-2 text-info"></i> 15 investigadores</span>
+              <a href="#" class="btn btn-sm boton-contorno-neon rounded-pill px-4">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer>
-    <p>Programa POLARIS – Instituto Tecnológico de Matamoros</p>
+<!-- MIEMBROS - SECCIÓN CON FONDO DE LA ESTRELLA POLAR -->
+<section id="members" class="seccion-polaris">
+  <div class="capa-polaris"></div>
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <h2 class="display-3 texto-degradado">Comunidad Polaris</h2>
+        <p class="lead fs-4 text-light">Miembros que han contribuido a los proyectos insignia</p>
+      </div>
+    </div>
+
+    <!-- Carrusel manual con flechas hacia afuera -->
+    <div id="carruselMiembros" class="carousel slide carrusel-miembros" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carruselMiembros" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositiva 1"></button>
+        <button type="button" data-bs-target="#carruselMiembros" data-bs-slide-to="1" aria-label="Diapositiva 2"></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- Diapositiva 1 -->
+        <div class="carousel-item active">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="tarjeta-miembro">
+                <img src="https://picsum.photos/id/1005/200/200" class="img-miembro" alt="Dra. Kai Chen">
+                <h4 class="nombre-miembro">Alumno 1</h4>
+                <p class="proyectos-miembro"><i class="bi bi-stars me-1" style="color: #cfdf7a;"></i> PolariX · Hydronautas</p>
+                <div class="frase-miembro">«La gravedad no detiene mi curiosidad»</div>
+                <span class="anio-miembro">2021</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tarjeta-miembro">
+                <img src="https://picsum.photos/id/1012/200/200" class="img-miembro" alt="Miguel Ortega">
+                <h4 class="nombre-miembro">Alumno 2</h4>
+                <p class="proyectos-miembro"><i class="bi bi-cpu me-1" style="color: #b0d0ff;"></i> Mentes en Órbita</p>
+                <div class="frase-miembro">«El cerebro es el próximo horizonte»</div>
+                <span class="anio-miembro">2022</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tarjeta-miembro">
+                <img src="https://picsum.photos/id/106/200/200" class="img-miembro" alt="Iliana Petrova">
+                <h4 class="nombre-miembro">Alumno 3</h4>
+                <p class="proyectos-miembro"><i class="bi bi-droplet me-1" style="color: #80b5e0;"></i> Hydronautas · PolariX</p>
+                <div class="frase-miembro">«Bajo el hielo, la vida espera»</div>
+                <span class="anio-miembro">2020</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Diapositiva 2 -->
+        <div class="carousel-item">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="tarjeta-miembro">
+                <img src="https://picsum.photos/id/1043/200/200" class="img-miembro" alt="James Keller">
+                <h4 class="nombre-miembro">JAlumno 4</h4>
+                <p class="proyectos-miembro"><i class="bi bi-stars me-1" style="color: #cfdf7a;"></i> PolariX</p>
+                <div class="frase-miembro">«Navegamos por las estrellas»</div>
+                <span class="anio-miembro">2023</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tarjeta-miembro">
+                <img src="https://picsum.photos/id/100/200/200" class="img-miembro" alt="Sofía Nuñez">
+                <h4 class="nombre-miembro">Alumno 5</h4>
+                <p class="proyectos-miembro"><i class="bi bi-cpu me-1" style="color: #b0d0ff;"></i> Mentes en Órbita</p>
+                <div class="frase-miembro">«La mente no tiene fronteras»</div>
+                <span class="anio-miembro">2021</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tarjeta-miembro">
+                <img src="https://picsum.photos/id/102/200/200" class="img-miembro" alt="Elias Voss">
+                <h4 class="nombre-miembro">Alumno 6</h4>
+                <p class="proyectos-miembro"><i class="bi bi-droplet me-1" style="color: #80b5e0;"></i> Hydronautas</p>
+                <div class="frase-miembro">«Exploramos lo inexplorado»</div>
+                <span class="anio-miembro">2022</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carruselMiembros" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carruselMiembros" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA MEJORADO (Únete a la exploración) -->
+<section id="cta" class="cta-mejorado">
+  <div class="container py-5">
+    <div class="tarjeta-cta text-center">
+      <h2 class="display-3 texto-degradado mb-4">Registro de Investigadores</h2>
+      <p class="fs-4 mb-4 text-light">Este portal está habilitado exclusivamente para la <strong class="text-info">documentación oficial</strong> de los integrantes de PolariX, Mentes en Órbita e Hydronautas.</p>
+      
+      <div class="texto-resaltado mb-4">
+        <p class="my-3">Si formas parte de un proyecto activo, inicia tu proceso de indexación</p>
+      </div>
+
+      <a href="registro.html" class="btn boton-neon btn-lg px-5 py-3 fs-4">
+        <i class="bi bi-clipboard-data me-2"></i>Registrar mis datos
+      </a>
+      <p class="mt-4 text-light opacity-50 small">
+        <i class="bi bi-database-check"></i> Los datos recolectados se utilizarán para el seguimiento documental del programa.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PIE DE PÁGINA -->
+<footer class="pt-5 pb-4">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <i class="bi bi-stars fs-1 text-info"></i>
+        <h4 class="texto-degradado">POLARIS Registry</h4>
+        <p>Programa de élite · Dra. Anabel</p>
+        <p><i class="bi bi-envelope-fill me-2"></i> contacto@polaris-registry.space<br>
+        <i class="bi bi-twitter-x me-2"></i> @polaris_registry<br>
+        <i class="bi bi-github"></i> /polaris-lab</p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-info">Enlaces rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#hero" class="text-white-50 text-decoration-none">Inicio</a></li>
+          <li><a href="#about" class="text-white-50 text-decoration-none">Sobre Polaris</a></li>
+          <li><a href="#projects" class="text-white-50 text-decoration-none">Proyectos</a></li>
+          <li><a href="#members" class="text-white-50 text-decoration-none">Miembros</a></li>
+          <li><a href="#cta" class="text-white-50 text-decoration-none">Acceso exclusivo</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-info">Atribución de imágenes</h5>
+        <p class="small text-white-50">Hero: Unsplash (Greg Rakozy). Proyectos: Unsplash (NASA, geralt, Samuel Ferrara). Miembros: Picsum. Fondo Polaris: Unsplash (Will Turner). Contenido ficticio.</p>
+        <p class="small text-white-50">© 2026 POLARIS · Todos los derechos reservados.</p>
+      </div>
+    </div>
+    <hr class="mt-4">
+    <div class="text-center text-white-50 small">
+      <i class="bi bi-c-circle"></i> Diseño por equipo 4.
+    </div>
+  </div>
 </footer>
 
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

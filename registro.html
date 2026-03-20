@@ -1,34 +1,272 @@
 <!DOCTYPE html>
+
 <html lang="es">
+  <head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | POLARIS Registry</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+<body class="fondo-estelar">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Registro POLARIS</title>
-</head>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-vidrio">
+    <div class="container">
+    <a class="navbar-brand" href="index.html">
+<img src="images/logo.png"
+alt="Polaris"
+class="imagen-circular"
+style="height: 70px; width: 70px; margin-right: 10px; object-fit: cover;">      <span class="fw-bold texto-degradado">POLARIS</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPolaris">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarPolaris">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+<li class="nav-item"><a class="nav-link active text-info" href="registro.html">Registro</a></li>
+</ul>
+</div>
+</div>
+</nav>
 
-<body>
+<main class="container py-5 mt-5">
+<div class="row justify-content-center mt-4">
+<div class="col-lg-10 col-xl-9">
 
-<h1>Registro de Miembros POLARIS</h1>
+  <div class="tarjeta-vidrio p-4 p-md-5">
+    <div class="text-center mb-5">
+      <h2 class="display-5 texto-degradado mb-3">Registro de Integrante</h2>
+      <p class="text-light opacity-75">Ingrese la información requerida para configurar su perfil en la base de datos de POLARIS.</p>
+    </div>
 
-<form>
+    <form action="#" method="POST" id="registration-form">
+        
+      <fieldset class="mb-5">
+        <legend class="fs-4 mb-4"><i class="bi bi-person-badge text-info me-2"></i>Datos Personales</legend>
+        
+        <div class="mb-3">
+          <label for="first-name" class="form-label text-light">Nombre(s)</label>
+          <input type="text" class="form-control input-espacial" id="first-name" name="first-name" required>
+        </div>
 
-<label>Nombre completo</label><br>
-<input type="text"><br><br>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="last-name-p" class="form-label text-light">Apellido Paterno</label>
+            <input type="text" class="form-control input-espacial" id="last-name-p" name="last-name-p" required>
+          </div>
+          <div class="col-md-6">
+            <label for="last-name-m" class="form-label text-light">Apellido Materno</label>
+            <input type="text" class="form-control input-espacial" id="last-name-m" name="last-name-m" required>
+          </div>
+        </div>
 
-<label>Correo electrónico</label><br>
-<input type="email"><br><br>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="personal-email" class="form-label text-light">Correo Electrónico (Personal)</label>
+            <input type="email" class="form-control input-espacial" id="personal-email" name="personal-email" required placeholder="correo@ejemplo.com">
+          </div>
+          <div class="col-md-6">
+            <label for="phone" class="form-label text-light">Teléfono Móvil</label>
+            <input type="tel" class="form-control input-espacial" id="phone" name="phone" required placeholder="10 dígitos" pattern="[0-9]{10}">
+          </div>
+        </div>
 
-<label>Proyecto de interés</label><br>
-<select>
-<option>PolariX</option>
-<option>Mentes en Órbita</option>
-<option>Hydronautas</option>
-</select><br><br>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="birth-date" class="form-label text-light">Fecha de Nacimiento</label>
+            <input type="date" class="form-control input-espacial" id="birth-date" name="birth-date" required>
+          </div>
+          <div class="col-md-6">
+            <label for="gender" class="form-label text-light">Género</label>
+            <select class="form-select input-espacial" id="gender" name="gender" required>
+              <option value="" disabled selected>Seleccione...</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+              <option value="O">Otro / Prefiero no decirlo</option>
+            </select>
+          </div>
+        </div>
+        <legend class="fs-4 mb-4"><i class="bi bi-camera text-info me-2"></i>Fotografía de Perfil</legend>
+<div class="mb-3">
+<label for="profile-pic" class="form-label text-light">Sube una fotografía de rostro (formato JPG o PNG, máx. 2MB)</label>
+<input type="file" class="form-control input-espacial" id="profile-pic" name="profile-pic" accept="image/png, image/jpeg" required>
+</div>
+      </fieldset>
+      
 
-<button type="submit">Enviar</button>
 
-</form>
 
-</body>
+      <fieldset class="mb-5">
+        <legend class="fs-4 mb-4"><i class="bi bi-book text-info me-2"></i>Datos Académicos</legend>
+        
+        <div class="row g-3 mb-3">
+          <div class="col-md-8">
+            <label for="institution" class="form-label text-light">Institución Educativa</label>
+            <input type="text" class="form-control input-espacial" id="institution" name="institution" required>
+          </div>
+          <div class="col-md-4">
+            <label for="student-id" class="form-label text-light">Número de Control</label>
+            <input type="text" class="form-control input-espacial" id="student-id" name="student-id" placeholder="8 o 9 dígitos" required>
+          </div>
+        </div>
 
-</html>
+        <div class="row g-3">
+          <div class="col-md-8">
+            <label for="career" class="form-label text-light">Carrera</label>
+            <select class="form-select input-espacial" id="career" name="career" required>
+              <option value="" disabled selected>Seleccione carrera...</option>
+              <option value="sistemas">Ing. en Sistemas Computacionales</option>
+              <option value="mecatronica">Ing. Mecatrónica</option>
+              <option value="electronica">Ing. Electrónica</option>
+              <option value="redes">Ing. en Redes</option>
+              <option value="otra">Otra</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="semester" class="form-label text-light">Semestre</label>
+            <input type="number" class="form-control input-espacial" id="semester" name="semester" min="1" max="14" required>
+          </div>
+        </div>
+      </fieldset>
+
+
+      
+      <fieldset class="mb-5">
+        <legend class="fs-4 mb-4"><i class="bi bi-rocket-takeoff text-info me-2"></i>Perfil POLARIS</legend>
+        
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <label for="polaris-gen" class="form-label text-light">Generación POLARIS</label>
+            <input type="text" class="form-control input-espacial" id="polaris-gen" name="polaris-gen" placeholder="Ej. 1ra Generación" required>
+          </div>
+          <div class="col-md-4">
+            <label for="admission-year" class="form-label text-light">Año de Ingreso</label>
+            <input type="number" class="form-control input-espacial" id="admission-year" name="admission-year" min="2020" max="2030" placeholder="Ej. 2023" required>
+          </div>
+          <div class="col-md-4">
+            <label for="project-interest" class="form-label text-light">Proyecto de Interés</label>
+            <select class="form-select input-espacial" id="project-interest" name="project-interest" required>
+              <option value="" disabled selected>Seleccione equipo...</option>
+              <option value="mentes">Mentes en Órbita</option>
+              <option value="polarix">PolariX</option>
+              <option value="hydronautas">Hydronautas</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label text-light d-block mb-3">Habilidades / Áreas de Dominio (Selecciona las que apliquen)</label>
+          <div class="row g-2 px-3">
+            <div class="col-md-4 col-sm-6">
+              <div class="form-check custom-checkbox">
+                <input class="form-check-input input-espacial-check" type="checkbox" value="programacion" id="hab-prog">
+                <label class="form-check-label text-light opacity-75" for="hab-prog">Programación</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="form-check custom-checkbox">
+                <input class="form-check-input input-espacial-check" type="checkbox" value="electronica" id="hab-elec">
+                <label class="form-check-label text-light opacity-75" for="hab-elec">Electrónica</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="form-check custom-checkbox">
+                <input class="form-check-input input-espacial-check" type="checkbox" value="cad" id="hab-cad">
+                <label class="form-check-label text-light opacity-75" for="hab-cad">Diseño CAD / 3D</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="form-check custom-checkbox">
+                <input class="form-check-input input-espacial-check" type="checkbox" value="investigacion" id="hab-inv">
+                <label class="form-check-label text-light opacity-75" for="hab-inv">Investigación</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="form-check custom-checkbox">
+                <input class="form-check-input input-espacial-check" type="checkbox" value="divulgacion" id="hab-div">
+                <label class="form-check-label text-light opacity-75" for="hab-div">Divulgación / RRPP</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="mb-5">
+        <legend class="fs-4 mb-4"><i class="bi bi-compass text-info me-2"></i>Seguimiento y Estatus</legend>
+
+        <div class="mb-4">
+          <label for="current-workplace" class="form-label text-light">Lugar de Trabajo o Institución Actual</label>
+          <input type="text" class="form-control input-espacial" id="current-workplace" name="current-workplace" placeholder="¿Dónde estudias o trabajas actualmente?">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label text-light d-block mb-3">Rol Actual dentro de POLARIS</label>
+          <div class="row g-2 px-3">
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input input-espacial-radio" type="radio" name="current-role" id="rol-lider" value="lider" required>
+                <label class="form-check-label text-light opacity-75" for="rol-lider">Líder de Equipo</label>
+              </div>
+              <div class="form-check mt-2">
+                <input class="form-check-input input-espacial-radio" type="radio" name="current-role" id="rol-participante" value="participante" required >
+                <label class="form-check-label text-light opacity-75" for="rol-participante">Participante Activo</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input input-espacial-radio" type="radio" name="current-role" id="rol-mentor" value="mentor" required>
+                <label class="form-check-label text-light opacity-75" for="rol-mentor">Mentor / Coordinador</label>
+              </div>
+              <div class="form-check mt-2">
+                <input class="form-check-input input-espacial-radio" type="radio" name="current-role" id="rol-colaborador" value="colaborador" required>
+                <label class="form-check-label text-light opacity-75" for="rol-colaborador">Colaborador Externo / Egresado</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check custom-checkbox mt-4 border-top border-info border-opacity-25 pt-3">
+          <input class="form-check-input input-espacial-check" type="checkbox" value="si" id="continue-collaborating" >
+          <label class="form-check-label text-info fw-bold" for="continue-collaborating">
+            Tengo interés en seguir colaborando en futuros proyectos de POLARIS
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="mb-5">
+        <legend class="fs-4 mb-4"><i class="bi bi-shield-lock text-info me-2"></i>Seguridad de la Cuenta</legend>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="password" class="form-label text-light">Contraseña</label>
+            <input type="password" class="form-control input-espacial" id="password" name="password" required minlength="8">
+          </div>
+          <div class="col-md-6">
+            <label for="confirm-password" class="form-label text-light">Confirmar Contraseña</label>
+            <input type="password" class="form-control input-espacial" id="confirm-password" name="confirm-password" required minlength="8">
+          </div>
+        </div>
+
+        <br>
+        <div class="form-check custom-checkbox">
+          <input class="form-check-input input-espacial-check" type="checkbox" value="" id="privacyPolicy" required>
+          <label class="form-check-label text-light small opacity-75" for="privacyPolicy">
+            Acepto el tratamiento de mis datos personales por parte de los administradores de POLARIS conforme al <a href="#" class="text-info">Aviso de Privacidad Institucional</a>.
+          </label>
+          <div class="invalid-feedback">
+            Debe aceptar los términos para continuar.
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button type="submit" class="btn boton-neon btn-lg px-4"><i class="bi bi-send me-2"></i>Registrar Miembro</button>
+        <button type="reset" class="btn boton-contorno-neon btn-lg px-4"><i class="bi bi-eraser me-2"></i>Borrar Formulario</button>
+      </div>
+    </form>
+
+  </div>
+</div>
