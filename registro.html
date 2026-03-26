@@ -22,7 +22,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarPolaris">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="main.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link active text-info" href="registro.html">Registro</a></li>
         </ul>
       </div>
@@ -38,7 +38,7 @@
             <p class="text-light opacity-75">Ingrese la información requerida para configurar su perfil en la base de datos de POLARIS.</p>
           </div>
 
-          <form action="#" method="POST" id="registration-form">
+          <form action="#" method="POST" id="registration-form" novalidate>
             <!-- Mensaje de error general -->
             <div id="form-message" class="alert alert-danger d-none" role="alert"></div>
 
@@ -48,19 +48,20 @@
 
               <div class="mb-3">
                 <label for="first-name" class="form-label text-light">Nombre(s)</label>
-                <input type="text" class="form-control input-espacial" id="first-name" name="first-name" required maxlength="50" placeholder="Ingrese su nombre o nombres">
+                <input type="text" class="form-control input-espacial" id="first-name" name="first-name" required maxlength="50" placeholder="Ej. Luis Daniel">
+                <div class="form-text text-info">Nombre completo (mínimo 10 caracteres en total).</div>
                 <div id="error-first-name" class="invalid-feedback"></div>
               </div>
 
               <div class="row g-3 mb-3">
                 <div class="col-md-6">
                   <label for="last-name-p" class="form-label text-light">Apellido Paterno</label>
-                  <input type="text" class="form-control input-espacial" id="last-name-p" name="last-name-p" required maxlength="30" placeholder="Ingrese su apellido paterno">
+                  <input type="text" class="form-control input-espacial" id="last-name-p" name="last-name-p" required maxlength="30" placeholder="Ej. Hernandez">
                   <div id="error-last-name-p" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="last-name-m" class="form-label text-light">Apellido Materno</label>
-                  <input type="text" class="form-control input-espacial" id="last-name-m" name="last-name-m" required maxlength="30" placeholder="Ingrese su apellido materno">
+                  <input type="text" class="form-control input-espacial" id="last-name-m" name="last-name-m" required maxlength="30" placeholder="Ej. Gómez">
                   <div id="error-last-name-m" class="invalid-feedback"></div>
                 </div>
               </div>
@@ -69,11 +70,13 @@
                 <div class="col-md-6">
                   <label for="personal-email" class="form-label text-light">Correo Electrónico (Personal)</label>
                   <input type="email" class="form-control input-espacial" id="personal-email" name="personal-email" required maxlength="80" placeholder="correo@ejemplo.com">
+                  <div class="form-text text-info">ejemplo@email.com</div>
                   <div id="error-personal-email" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="phone" class="form-label text-light">Teléfono Móvil</label>
                   <input type="tel" class="form-control input-espacial" id="phone" name="phone" required placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10">
+                  <div class="form-text text-info">Debe contener exactamente 10 dígitos numéricos.</div>
                   <div id="error-phone" class="invalid-feedback"></div>
                 </div>
               </div>
@@ -82,6 +85,7 @@
                 <div class="col-md-6">
                   <label for="birth-date" class="form-label text-light">Fecha de Nacimiento</label>
                   <input type="date" class="form-control input-espacial" id="birth-date" name="birth-date" required>
+                  <div class="form-text text-info">Seleccione su fecha de nacimiento.</div>
                   <div id="error-birth-date" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-6">
@@ -98,8 +102,9 @@
 
               <legend class="fs-4 mb-4 mt-3"><i class="bi bi-camera text-info me-2"></i>Fotografía de Perfil</legend>
               <div class="mb-3">
-                <label for="profile-pic" class="form-label text-light">Sube una fotografía de rostro (formato JPG o PNG, máx. 2MB)</label>
+                <label for="profile-pic" class="form-label text-light">Sube una fotografía de rostro</label>
                 <input type="file" class="form-control input-espacial" id="profile-pic" name="profile-pic" accept="image/png, image/jpeg" required>
+                <div class="form-text text-info">Formatos JPG o PNG, tamaño máximo 2MB.</div>
                 <div id="error-profile-pic" class="invalid-feedback"></div>
               </div>
             </fieldset>
@@ -117,6 +122,7 @@
                 <div class="col-md-4">
                   <label for="student-id" class="form-label text-light">Número de Control</label>
                   <input type="text" class="form-control input-espacial" id="student-id" name="student-id" placeholder="8 o 9 dígitos" pattern="[0-9]{8,9}" maxlength="9" required>
+                  <div class="form-text text-info">8 o 9 dígitos numéricos (ej. 20231234).</div>
                   <div id="error-student-id" class="invalid-feedback"></div>
                 </div>
               </div>
@@ -137,6 +143,7 @@
                 <div class="col-md-4">
                   <label for="semester" class="form-label text-light">Semestre</label>
                   <input type="number" class="form-control input-espacial" id="semester" name="semester" min="1" max="12" required placeholder="1 a 12">
+                  <div class="form-text text-info">Valor entre 1 y 12.</div>
                   <div id="error-semester" class="invalid-feedback"></div>
                 </div>
               </div>
@@ -153,8 +160,9 @@
                   <div id="error-polaris-gen" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-4">
-                  <label for="admission-year" class="form-label text-light">Año de Ingreso</label>
+                  <label for="admission-year" class="form-label text-light">Año de Ingreso </label>
                   <input type="number" class="form-control input-espacial" id="admission-year" name="admission-year" min="2020" max="2030" placeholder="Ej. 2023" required>
+                  <div class="form-text text-info">Año entre 2020 y 2030.</div>
                   <div id="error-admission-year" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-4">
@@ -184,13 +192,18 @@
               </div>
 
               <div class="mb-4">
-                <label class="form-label text-light d-block mb-3">Motivación para unirte a POLARIS</label>
+                <label for="motivation" class="form-label text-light">Motivación para unirte a POLARIS</label>
                 <textarea class="form-control input-espacial" id="motivation" name="motivation" rows="3" required placeholder="Cuéntanos por qué quieres formar parte..."></textarea>
+                <div class="form-text text-info">Mínimo 20 caracteres.</div>
                 <div id="error-motivation" class="invalid-feedback"></div>
               </div>
+            </fieldset>
 
-              <div class="mb-4" id="skills-container">
-                <label class="form-label text-light d-block mb-3">Habilidades / Áreas de Dominio (Selecciona las que apliquen)</label>
+            <!-- HABILIDADES (separado) -->
+            <fieldset class="mb-5">
+              <legend class="fs-4 mb-4"><i class="bi bi-code-slash text-info me-2"></i>Habilidades</legend>
+              <div id="skills-container">
+                <label class="form-label text-light d-block mb-3">Selecciona las áreas que dominas (al menos una)</label>
                 <div class="row g-2 px-3">
                   <div class="col-md-4 col-sm-6">
                     <div class="form-check custom-checkbox">
@@ -223,17 +236,19 @@
                     </div>
                   </div>
                 </div>
+                <div class="form-text text-info">Debes seleccionar al menos una habilidad.</div>
                 <div id="error-skills" class="invalid-feedback"></div>
               </div>
             </fieldset>
 
             <!-- SEGUIMIENTO Y ESTATUS -->
             <fieldset class="mb-5">
-              <legend class="fs-4 mb-4"><i class="bi bi-compass text-info me-2"></i>Seguimiento y Estatus</legend>
+              <legend class="fs-4 mb-4"><i class="bi bi-compass text-info me-2"></i>Seguimiento</legend>
 
               <div class="mb-4">
                 <label for="current-workplace" class="form-label text-light">Lugar de Trabajo o Institución Actual</label>
                 <input type="text" class="form-control input-espacial" id="current-workplace" name="current-workplace" maxlength="100" placeholder="¿Dónde estudias o trabajas actualmente?">
+                <div class="form-text text-info">Opcional. Si se ingresa, mínimo 5 caracteres.</div>
                 <div id="error-current-workplace" class="invalid-feedback"></div>
               </div>
 
@@ -263,6 +278,7 @@
                     </div>
                   </div>
                 </div>
+                <div class="form-text text-info">Selecciona una opción.</div>
                 <div id="error-current-role" class="invalid-feedback"></div>
               </div>
 
@@ -281,11 +297,13 @@
                 <div class="col-md-6">
                   <label for="password" class="form-label text-light">Contraseña</label>
                   <input type="password" class="form-control input-espacial" id="password" name="password" required minlength="8" maxlength="20" placeholder="Mínimo 8 caracteres">
+                  <div class="form-text text-info">Mínimo 8 caracteres.</div>
                   <div id="error-password" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="confirm-password" class="form-label text-light">Confirmar Contraseña</label>
                   <input type="password" class="form-control input-espacial" id="confirm-password" name="confirm-password" required minlength="8" maxlength="20" placeholder="Repita su contraseña">
+                  <div class="form-text text-info">Debe coincidir con la contraseña.</div>
                   <div id="error-confirm-password" class="invalid-feedback"></div>
                 </div>
               </div>
@@ -293,8 +311,9 @@
               <div class="form-check custom-checkbox mt-3">
                 <input class="form-check-input input-espacial-check" type="checkbox" value="aceptado" id="privacyPolicy" name="privacyPolicy" required>
                 <label class="form-check-label text-light small opacity-75" for="privacyPolicy">
-                  Acepto el tratamiento de mis datos personales por parte de los administradores de POLARIS conforme al <a href="#" class="text-info">Aviso de Privacidad Institucional</a>.
+                  Acepto el tratamiento de mis datos personales por parte de los administradores de POLARIS conforme al <a href="#" class="text-info">Aviso de Privacidad Institucional</a>. <span class="text-danger">*</span>
                 </label>
+                <div class="form-text text-info">Debes aceptar para continuar.</div>
                 <div id="error-privacyPolicy" class="invalid-feedback"></div>
               </div>
             </fieldset>

@@ -5,15 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillsContainer = document.getElementById('skills-container');
   const currentRoleGroup = document.getElementById('current-role-group');
 
+  const API_URL = 'https://polaris.free.beeceptor.com/members';
+
   const setFieldError = (fieldId, message) => {
     const errorSpan = document.getElementById(`error-${fieldId}`);
     const input = document.getElementById(fieldId);
+
     if (errorSpan) errorSpan.textContent = message;
 
     if (input) {
       input.classList.remove('is-valid');
       input.classList.add('is-invalid');
     }
+
     if (fieldId === 'current-role' && currentRoleGroup) {
       currentRoleGroup.classList.remove('is-valid');
       currentRoleGroup.classList.add('is-invalid');
@@ -23,12 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const setFieldValid = (fieldId) => {
     const errorSpan = document.getElementById(`error-${fieldId}`);
     const input = document.getElementById(fieldId);
+
     if (errorSpan) errorSpan.textContent = '';
 
     if (input) {
       input.classList.remove('is-invalid');
       input.classList.add('is-valid');
     }
+
     if (fieldId === 'current-role' && currentRoleGroup) {
       currentRoleGroup.classList.remove('is-invalid');
       currentRoleGroup.classList.add('is-valid');
@@ -38,62 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearFieldState = (fieldId) => {
     const errorSpan = document.getElementById(`error-${fieldId}`);
     const input = document.getElementById(fieldId);
+
     if (errorSpan) errorSpan.textContent = '';
 
     if (input) {
       input.classList.remove('is-invalid', 'is-valid');
     }
+
     if (fieldId === 'current-role' && currentRoleGroup) {
       currentRoleGroup.classList.remove('is-invalid', 'is-valid');
     }
   };
 
-  const setGeneralError = (message) => {
+  const setGeneralError = (message, type = 'danger') => {
     generalErrorContainer.textContent = message;
-    generalErrorContainer.classList.remove('d-none');
+    generalErrorContainer.classList.remove('d-none', 'alert-danger', 'alert-success');
+    generalErrorContainer.classList.add(`alert-${type}`);
   };
 
   const clearGeneralError = () => {
     generalErrorContainer.textContent = '';
     generalErrorContainer.classList.add('d-none');
-  };
-
-  const clearAllErrors = () => {
-    allFields.forEach(fieldId => clearFieldState(fieldId));
-    const skillsError = document.getElementById('error-skills');
-    if (skillsError) skillsError.textContent = '';
-    if (skillsContainer) skillsContainer.classList.remove('border', 'border-success', 'rounded', 'p-2');
-    clearGeneralError();
-  };
-
-  const scrollToFirstError = () => {
-    const firstInvalid = document.querySelector('.is-invalid');
-    if (firstInvalid) {
-      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      if (firstInvalid.id === 'current-role-group') {
-        const firstRadio = firstInvalid.querySelector('input[type="radio"]');
-        if (firstRadio) firstRadio.focus({ preventScroll: true });
-      } else {
-        firstInvalid.focus({ preventScroll: true });
-      }
-    }
-  };
-
-
-  const validateSkills = () => {
-    const anyChecked = Array.from(skillCheckboxes).some(cb => cb.checked);
-    const skillsError = document.getElementById('error-skills');
-    if (!anyChecked) {
-      if (skillsError) skillsError.textContent = 'Debe seleccionar al menos una habilidad.';
-      if (skillsContainer) skillsContainer.classList.add('border', 'border-danger', 'rounded', 'p-2');
-      return false;
-    }
-    if (skillsError) skillsError.textContent = '';
-    if (skillsContainer) {
-      skillsContainer.classList.remove('border', 'border-danger');
-      skillsContainer.classList.add('border', 'border-success', 'rounded', 'p-2');
-    }
-    return true;
+    generalErrorContainer.classList.remove('alert-danger', 'alert-success');
   };
 
   const allFields = [
@@ -103,6 +75,56 @@ document.addEventListener('DOMContentLoaded', () => {
     'polaris-role', 'motivation', 'current-workplace', 'password',
     'confirm-password', 'privacyPolicy', 'current-role'
   ];
+
+  const clearAllErrors = () => {
+    allFields.forEach(fieldId => clearFieldState(fieldId));
+
+    const skillsError = document.getElementById('error-skills');
+    if (skillsError) skillsError.textContent = '';
+
+    if (skillsContainer) {
+      skillsContainer.classList.remove('border', 'border-danger', 'border-success', 'rounded', 'p-2');
+    }
+
+    clearGeneralError();
+  };
+
+  const scrollToFirstError = () => {
+    const firstInvalid = document.querySelector('.is-invalid');
+
+    if (firstInvalid) {
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      if (firstInvalid.id === 'current-role-group') {
+        const firstRadio = firstInvalid.querySelector('input[type="radio"]');
+        if (firstRadio) firstRadio.focus({ preventScroll: true });
+      } else {
+        firstInvalid.focus({ preventScroll: true });
+      }
+    }
+  };
+
+  const validateSkills = () => {
+    const anyChecked = Array.from(skillCheckboxes).some(cb => cb.checked);
+    const skillsError = document.getElementById('error-skills');
+
+    if (!anyChecked) {
+      if (skillsError) skillsError.textContent = 'Debe seleccionar al menos una habilidad.';
+      if (skillsContainer) {
+        skillsContainer.classList.remove('border-success');
+        skillsContainer.classList.add('border', 'border-danger', 'rounded', 'p-2');
+      }
+      return false;
+    }
+
+    if (skillsError) skillsError.textContent = '';
+    if (skillsContainer) {
+      skillsContainer.classList.remove('border-danger');
+      skillsContainer.classList.add('border', 'border-success', 'rounded', 'p-2');
+    }
+
+    return true;
+  };
 
   const validationRules = [
     {
@@ -114,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullName = `${firstName} ${lastNameP} ${lastNameM}`.trim();
         return fullName.length >= 10;
       },
-      message: 'El nombre debe ser validdo mas de 10 caracteres.'
+      message: 'El nombre debe tener más de 10 caracteres.'
     },
     {
       id: 'phone',
@@ -183,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'personal-email',
       validate: (input) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()),
-      message: 'Ingrese un correo electrónico válido (ejemplo@dominio.com).'
+      message: 'Ingrese un correo electrónico válido.'
     },
     {
       id: 'gender',
@@ -234,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const validateSingleField = (rule) => {
     let isValid;
+
     if (rule.id === 'current-role') {
       isValid = rule.validate();
     } else {
@@ -241,11 +264,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!input) return false;
       isValid = rule.validate(input);
     }
+
     if (isValid) {
       setFieldValid(rule.id);
     } else {
       setFieldError(rule.id, rule.message);
     }
+
     return isValid;
   };
 
@@ -262,28 +287,108 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!validateSkills()) isValid = false;
 
     if (!isValid) {
-      setGeneralError('El formulario tiene errores. Revise los campos marcados antes de enviarlo.');
+      setGeneralError('El formulario tiene errores. Revise los campos marcados antes de enviarlo.', 'danger');
       scrollToFirstError();
     }
 
     return isValid;
   };
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (validateForm()) {
-      alert('Formulario validado correctamente. Desea enviar el formulario?.');
-      form.submit();
+
+    if (!validateForm()) return;
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonHTML = submitButton ? submitButton.innerHTML : '';
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Enviando...';
+    }
+
+    const data = {
+      firstName: document.getElementById('first-name').value.trim(),
+      lastNameP: document.getElementById('last-name-p').value.trim(),
+      lastNameM: document.getElementById('last-name-m').value.trim(),
+      personalEmail: document.getElementById('personal-email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      birthDate: document.getElementById('birth-date').value,
+      gender: document.getElementById('gender').value,
+
+      institution: document.getElementById('institution').value.trim(),
+      studentId: document.getElementById('student-id').value.trim(),
+      career: document.getElementById('career').value,
+      semester: document.getElementById('semester').value,
+
+      polarisGen: document.getElementById('polaris-gen').value.trim(),
+      admissionYear: document.getElementById('admission-year').value,
+      projectInterest: document.getElementById('project-interest').value,
+      polarisRole: document.getElementById('polaris-role').value,
+      motivation: document.getElementById('motivation').value.trim(),
+
+      skills: [...document.querySelectorAll('.skill-checkbox:checked')].map(cb => cb.value),
+
+      currentWorkplace: document.getElementById('current-workplace').value.trim(),
+      currentRole: document.querySelector('input[name="current-role"]:checked')?.value || '',
+      continueCollaborating: document.getElementById('continue-collaborating')?.checked || false,
+
+      password: document.getElementById('password').value,
+      privacyPolicy: document.getElementById('privacyPolicy').checked,
+
+      // Solo manda el nombre del archivo, no la imagen real
+      profilePicName: document.getElementById('profile-pic').files[0]?.name || ''
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      const responseText = await response.text();
+      console.log('Respuesta de Beeceptor:', responseText);
+
+      setGeneralError('Formulario enviado correctamente a la API.', 'success');
+      form.reset();
+
+      allFields.forEach(fieldId => clearFieldState(fieldId));
+
+      const skillsError = document.getElementById('error-skills');
+      if (skillsError) skillsError.textContent = '';
+
+      if (skillsContainer) {
+        skillsContainer.classList.remove('border', 'border-danger', 'border-success', 'rounded', 'p-2');
+      }
+    } catch (error) {
+      console.error('Error al enviar:', error);
+      setGeneralError('No se pudo enviar el formulario a la API.', 'danger');
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonHTML;
+      }
     }
   });
 
   validationRules.forEach(rule => {
-    if (rule.id === 'current-role') {
-      return;
-    }
+    if (rule.id === 'current-role') return;
+
     const input = document.getElementById(rule.id);
     if (!input) return;
-    const eventType = (input.type === 'checkbox' || input.type === 'select-one') ? 'change' : 'input';
+
+    const eventType =
+      (input.type === 'checkbox' || input.type === 'select-one' || input.type === 'file')
+        ? 'change'
+        : 'input';
+
     input.addEventListener(eventType, () => {
       validateSingleField(rule);
       clearGeneralError();
@@ -294,11 +399,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const lastNameP = document.getElementById('last-name-p');
   const lastNameM = document.getElementById('last-name-m');
   const fullNameRule = validationRules.find(r => r.id === 'first-name');
+
   if (fullNameRule && firstName && lastNameP && lastNameM) {
     const revalidateFullName = () => {
       validateSingleField(fullNameRule);
       clearGeneralError();
     };
+
     firstName.addEventListener('input', revalidateFullName);
     lastNameP.addEventListener('input', revalidateFullName);
     lastNameM.addEventListener('input', revalidateFullName);
@@ -307,11 +414,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const passwordInput = document.getElementById('password');
   const confirmInput = document.getElementById('confirm-password');
   const confirmRule = validationRules.find(r => r.id === 'confirm-password');
+
   if (confirmRule && passwordInput && confirmInput) {
     const revalidateConfirm = () => {
       validateSingleField(confirmRule);
       clearGeneralError();
     };
+
     passwordInput.addEventListener('input', revalidateConfirm);
     confirmInput.addEventListener('input', revalidateConfirm);
   }
@@ -334,6 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const roleRadios = document.querySelectorAll('input[name="current-role"]');
   const roleRule = validationRules.find(r => r.id === 'current-role');
+
   if (roleRule) {
     roleRadios.forEach(radio => {
       radio.addEventListener('change', () => {
